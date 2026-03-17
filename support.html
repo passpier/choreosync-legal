@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — ChoreoSync</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #161921;
+      --border: #232733;
+      --accent: #e8457a;
+      --accent-dim: rgba(232, 69, 122, 0.12);
+      --text: #eef0f5;
+      --muted: #7a7f94;
+      --mono: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg { width: 16px; height: 16px; }
+
+    .logo-name {
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── HERO ─── */
+    .hero {
+      max-width: 640px;
+      margin: 5rem auto 3rem;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(232, 69, 122, 0.25);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* ─── MAIN ─── */
+    main {
+      max-width: 680px;
+      margin: 0 auto 6rem;
+      padding: 0 2rem;
+    }
+
+    /* ─── EMAIL CTA ─── */
+    .email-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .email-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .email-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(232, 69, 122, 0.25);
+      border-radius: 12px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .email-icon svg { width: 22px; height: 22px; color: var(--accent); }
+
+    .email-body { flex: 1; }
+
+    .email-label {
+      font-size: 0.75rem;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .email-address {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .email-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    /* ─── FAQ ─── */
+    .section-title {
+      font-size: 0.72rem;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    details[open] { border-color: rgba(232, 69, 122, 0.35); }
+
+    summary {
+      padding: 1.1rem 1.25rem;
+      font-weight: 500;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .chevron {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--muted);
+      transition: transform 0.25s, color 0.2s;
+    }
+
+    details[open] .chevron {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    .faq-answer {
+      padding: 0 1.25rem 1.1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .faq-answer a { color: var(--accent); text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+
+    /* ─── SUBSCRIPTION STEPS ─── */
+    .steps {
+      margin: 0.5rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    .steps li { margin-bottom: 0.35rem; }
+
+    /* ─── POLICIES ROW ─── */
+    .policy-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .policy-link {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .policy-link:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .policy-link svg { width: 16px; height: 16px; color: var(--accent); flex-shrink: 0; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 1rem; }
+      .nav-links { gap: 1rem; }
+      .email-card { flex-direction: column; text-align: center; }
+      .policy-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="#">
+      <span class="logo-name">ChoreoSync</span>
+    </a>
+    <div class="nav-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge">Support</div>
+    <h1>How can we help?</h1>
+    <p>Questions about ChoreoSync? We're here. Most replies within 24–48 hours.</p>
+  </div>
+
+  <main>
+
+    <!-- Email CTA -->
+    <a class="email-card" href="mailto:poo9810@gmail.com">
+      <div class="email-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="2,4 12,13 22,4"/>
+        </svg>
+      </div>
+      <div class="email-body">
+        <div class="email-label">Contact</div>
+        <div class="email-address">poo9810@gmail.com</div>
+        <div class="email-sub">Tap to open your mail app</div>
+      </div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(-90deg)">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </a>
+
+    <!-- FAQ -->
+    <div class="section-title">Frequently Asked Questions</div>
+
+    <div class="faq-list">
+
+      <details>
+        <summary>
+          How does the automatic sync work?
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          ChoreoSync uses on-device audio fingerprinting (FFT cross-correlation) to find the exact matching moment between your practice video and the reference choreography. The entire process happens locally on your device in under 2 seconds — no internet connection required.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          Are my videos uploaded to a server?
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          Never. All video processing, audio fingerprinting, and export happen 100% on your device. Your videos never leave your phone. No accounts, no cloud storage, no servers.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          How do I cancel my subscription?
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          Subscriptions are managed entirely by Apple. To cancel:
+          <ol class="steps">
+            <li>Open <strong>Settings</strong> on your iPhone</li>
+            <li>Tap your name → <strong>Subscriptions</strong></li>
+            <li>Find <strong>ChoreoSync</strong> and tap <strong>Cancel Subscription</strong></li>
+          </ol>
+          You'll retain Pro access until the end of the current billing period.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          I switched phones. How do I restore my purchase?
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          Open ChoreoSync and tap <strong>Restore Purchases</strong> on the Pro screen. Sign in with the same Apple ID you used to purchase, and your entitlement will be restored automatically.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          What's the difference between Monthly, Annual, and Lifetime?
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <strong>Monthly</strong> and <strong>Annual</strong> are auto-renewable subscriptions — Annual offers a significant discount over Monthly. <strong>Lifetime</strong> is a one-time purchase with no recurring charges: pay once and keep Pro access forever, including all future updates.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          The sync result doesn't look right. What can I try?
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          Make sure both videos contain audible music — the sync engine relies on the audio track. If the practice video was recorded in a very loud environment or the music is barely audible, results may vary. Try trimming both videos to start where the music clearly begins and tap Align again. If you're still having trouble, email us with a description of your setup.
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          What iOS version do I need?
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          ChoreoSync requires <strong>iOS 17 or later</strong>.
+        </div>
+      </details>
+
+    </div>
+
+    <!-- Policy links -->
+    <div class="policy-row">
+      <a class="policy-link" href="privacy.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Privacy Policy
+      </a>
+      <a class="policy-link" href="terms.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Terms of Service
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 ChoreoSync. All rights reserved.
+  </footer>
+
+</body>
+</html>
